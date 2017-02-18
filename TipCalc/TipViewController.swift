@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TipViewController.swift
 //  TipCalc
 //
 //  Created by Nana on 2/16/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TipViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
