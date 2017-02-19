@@ -30,6 +30,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <connections>
+                                            <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
+                                        </connections>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ok3-TH-oaw">
                                         <rect key="frame" x="0.0" y="92" width="343" height="29"/>
@@ -50,11 +53,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0MZ-3q-BW4">
                                 <rect key="frame" x="16" y="262" width="343" height="48"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-Re-0Zc">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-Re-0Zc">
                                         <rect key="frame" x="0.0" y="10" width="167.5" height="29"/>
                                         <segments>
-                                            <segment title="Merge"/>
                                             <segment title="Split"/>
+                                            <segment title="Merge"/>
                                         </segments>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8si-gz-BAb">
@@ -191,6 +194,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="kzd-hR-Hqj"/>
+                    <connections>
+                        <outlet property="billAmount" destination="4L8-bX-TZt" id="ZKf-H9-Nd2"/>
+                        <outlet property="tipAmount" destination="UDz-16-DTc" id="a35-Bd-jBo"/>
+                        <outlet property="tipType" destination="ok3-TH-oaw" id="JJ5-D6-Qhv"/>
+                        <outlet property="totalAmount" destination="8si-gz-BAb" id="Qz3-cw-sie"/>
+                        <outlet property="totalFor2" destination="BIt-jZ-b5f" id="DVp-Yp-DV8"/>
+                        <outlet property="totalFor3" destination="ETs-xg-Luq" id="2rv-9n-myU"/>
+                        <outlet property="totalFor4" destination="wFI-Ze-75Y" id="Pmq-k8-YdU"/>
+                        <outlet property="totalType" destination="YZN-Re-0Zc" id="6Yb-s2-1ao"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
