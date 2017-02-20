@@ -75,7 +75,7 @@ class TipViewController: UIViewController {
 
         let selectedTipType = TipCalcEngine.TipType(rawValue: tipTypeControl.selectedSegmentIndex)! // Guaranteed return value
 
-        if let inputBillAmount = Float(billAmount.text ?? "") {
+        if let inputBillAmount = Float(billAmount.text ?? ""), inputBillAmount > 0 {
 
             let result = engine.calculatTipAndTotals(billAmount: inputBillAmount, tipType: selectedTipType)
 

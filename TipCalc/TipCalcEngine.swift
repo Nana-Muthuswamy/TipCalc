@@ -20,8 +20,20 @@ class TipCalcEngine {
 
     func calculatTipAndTotals(billAmount :Float, tipType: TipType) -> (tipAmount: Float, totalFor1: Float, totalFor2: Float, totalFor3: Float, totalFor4: Float) {
 
-        let tipAmount: Float = 0.0
-        let totalAmount: Float = 0.0
+        var tipPercentage: Float = 0.0
+
+        switch tipType {
+        case .Decent:
+            tipPercentage = 0.10
+        case .Happy:
+            tipPercentage = 0.15
+        case .Generous:
+            tipPercentage = 0.20
+        }
+
+        let tipAmount = billAmount * tipPercentage
+        let totalAmount = billAmount + tipAmount
+
 
         return (tipAmount,totalAmount,totalAmount/2,totalAmount/3,totalAmount/4)
     }

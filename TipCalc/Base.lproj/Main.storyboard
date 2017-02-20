@@ -42,7 +42,7 @@
                                             <segment title="Decent"/>
                                         </segments>
                                         <connections>
-                                            <action selector="tipTypeChanged:" destination="BYZ-38-t0r" eventType="touchDown" id="X2w-yL-CbP"/>
+                                            <action selector="tipTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="oQN-0b-onT"/>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-16-DTc">
