@@ -23,8 +23,16 @@ class TipViewController: UIViewController {
     @IBOutlet weak var totalStack: UIStackView!
     @IBOutlet weak var splitTotalStack: UIStackView!
 
+    enum TotalType: Int {
+        case Split
+        case Merge
+    }
+
     // Calc Engine
     let engine = TipCalcEngine()
+
+    // Weak reference to Timer (current RunLoop will hold strong reference and removes it automatically)
+    weak var timerToUpdateUIFields: Timer?
 
     
     // MARK: Method Overrides
@@ -42,12 +50,20 @@ class TipViewController: UIViewController {
     // MARK: IBActions
 
     @IBAction func billAmountChanged(_ sender: UITextField) {
-        print("Bill: \(sender.text!)")
-        updateUIFields()
+
+        if let timer = self.timerToUpdateUIFields {
+            timer.invalidate()
+            timerToUpdateUIFields = nil
+        }
+
+        timerToUpdateUIFields = Timer.scheduledTimer(withTimeInterval: 0.45, repeats: false) {_ in
+            self.updateUIFieldValues()
+            self.timerToUpdateUIFields = nil;
+        }
     }
 
     @IBAction func tipTypeChanged(_ sender: UISegmentedControl) {
-        updateUIFields()
+        updateUIFieldValues()
     }
 
     @IBAction func totalTypeChanged(_ sender: UISegmentedControl) {
@@ -55,14 +71,19 @@ class TipViewController: UIViewController {
 
     // MARK: Utils
 
-    private func updateUIFields () -> Void {
+    private func updateUIFieldValues () -> Void {
 
         let selectedTipType = TipCalcEngine.TipType(rawValue: tipTypeControl.selectedSegmentIndex)! // Guaranteed return value
-        let selectedTotalType = TipCalcEngine.TotalType(rawValue: totalTypeControl.selectedSegmentIndex)! // Guaranteed return value
 
         if let inputBillAmount = Float(billAmount.text ?? "") {
 
-        totalFor1.text = "\(engine.calculatTotal(totalType: selectedTotalType, billAmount: inputBillAmount, tipType: selectedTipType))"
+            let result = engine.calculatTipAndTotals(billAmount: inputBillAmount, tipType: selectedTipType)
+
+            tipAmount.text = "\(result.tipAmount)"
+            totalFor1.text = "\(result.totalFor1)"
+            totalFor2.text = "\(result.totalFor2)"
+            totalFor3.text = "\(result.totalFor3)"
+            totalFor4.text = "\(result.totalFor4)"
 
         }
     }

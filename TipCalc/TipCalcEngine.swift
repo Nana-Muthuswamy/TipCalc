@@ -16,20 +16,13 @@ class TipCalcEngine {
         case Decent
     }
 
-    enum TotalType: Int {
-        case Split
-        case Merge
-    }
-
     // MARK: Calc Methods
 
-    // - Parameters:
-    //      - totalType: TotalType.Split or TotalType.Merge
-    //      - billAmount: Bill for which tip is applied while calculating total amount
-    //      - tipType: TipType.Generous (20%) or .Happy (15%) or .Decent (10%)
-    func calculatTotal(totalType: TotalType, billAmount :Float, tipType: TipType) -> Float {
+    func calculatTipAndTotals(billAmount :Float, tipType: TipType) -> (tipAmount: Float, totalFor1: Float, totalFor2: Float, totalFor3: Float, totalFor4: Float) {
 
-        return 0.0
+        let tipAmount: Float = 0.0
+        let totalAmount: Float = 0.0
+
+        return (tipAmount,totalAmount,totalAmount/2,totalAmount/3,totalAmount/4)
     }
-
 }
