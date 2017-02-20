@@ -31,19 +31,27 @@ class TipViewController: UIViewController {
     // Calc Engine
     let engine = TipCalcEngine()
 
-    // Weak reference to Timer (current RunLoop will hold strong reference and removes it automatically)
+    // Weak reference to Timers (current RunLoop will hold strong reference and removes it automatically)
+    // The Timer to delay updating totals for better user experience
     weak var timerToUpdateUIFields: Timer?
-    
+
     // MARK: Method Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Displays the keypad
+        showKeyPad()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        hideKeyPad()
     }
 
     // MARK: IBActions
@@ -62,10 +70,14 @@ class TipViewController: UIViewController {
     }
 
     @IBAction func tipTypeChanged(_ sender: UISegmentedControl) {
+
+        hideKeyPad()
+        // Calculate new total and update the field values
         updateUIFieldValues()
     }
 
     @IBAction func totalTypeChanged(_ sender: UISegmentedControl) {
+        hideKeyPad()
     }
 
     // MARK: Utils
@@ -94,5 +106,13 @@ class TipViewController: UIViewController {
         }
     }
 
-}
+    private func hideKeyPad() -> Void {
+        // Hides the keypad
+        billAmount.resignFirstResponder()
+    }
 
+    private func showKeyPad() -> Void {
+        // Displays the keypad
+        billAmount.becomeFirstResponder()
+    }
+}

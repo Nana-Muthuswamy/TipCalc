@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                         <connections>
                                             <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
                                         </connections>
@@ -63,7 +63,7 @@
                                             <segment title="Merge"/>
                                         </segments>
                                         <connections>
-                                            <action selector="totalTypeChanged:" destination="BYZ-38-t0r" eventType="touchDown" id="u1u-Ah-P55"/>
+                                            <action selector="totalTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3GW-ie-0Ah"/>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8si-gz-BAb">
