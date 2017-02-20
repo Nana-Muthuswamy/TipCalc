@@ -33,7 +33,6 @@ class TipViewController: UIViewController {
 
     // Weak reference to Timer (current RunLoop will hold strong reference and removes it automatically)
     weak var timerToUpdateUIFields: Timer?
-
     
     // MARK: Method Overrides
 
@@ -79,12 +78,19 @@ class TipViewController: UIViewController {
 
             let result = engine.calculatTipAndTotals(billAmount: inputBillAmount, tipType: selectedTipType)
 
-            tipAmount.text = "\(result.tipAmount)"
-            totalFor1.text = "\(result.totalFor1)"
-            totalFor2.text = "\(result.totalFor2)"
-            totalFor3.text = "\(result.totalFor3)"
-            totalFor4.text = "\(result.totalFor4)"
+            tipAmount.text = String(format: "$%.2f", result.tipAmount)
+            totalFor1.text = String(format: "$%.2f", result.totalFor1)
+            totalFor2.text = String(format: "$%.2f", result.totalFor2)
+            totalFor3.text = String(format: "$%.2f", result.totalFor3)
+            totalFor4.text = String(format: "$%.2f", result.totalFor4)
 
+        } else {
+
+            tipAmount.text = " "
+            totalFor1.text = " "
+            totalFor2.text = " "
+            totalFor3.text = " "
+            totalFor4.text = " "
         }
     }
 
