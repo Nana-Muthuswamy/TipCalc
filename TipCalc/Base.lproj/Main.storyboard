@@ -25,74 +25,79 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="d65-U5-Gut" userLabel="Main Stack View">
                                 <rect key="frame" x="16" y="72" width="343" height="422"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="McT-LV-Opv" userLabel="Input Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="170"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-bX-TZt">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="9ma-B0-16A"/>
+                                        </connections>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="McT-LV-Opv" userLabel="Tip Stack">
+                                        <rect key="frame" x="0.0" y="92" width="343" height="146"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-bX-TZt">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
-                                                <connections>
-                                                    <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
-                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9ma-B0-16A"/>
-                                                </connections>
-                                            </textField>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ok3-TH-oaw">
-                                                <rect key="frame" x="0.0" y="92" width="343" height="29"/>
-                                                <segments>
-                                                    <segment title="Generous"/>
-                                                    <segment title="Happy"/>
-                                                    <segment title="Decent"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="tipTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="oQN-0b-onT"/>
-                                                </connections>
-                                            </segmentedControl>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-od-7Lt">
-                                                <rect key="frame" x="0.0" y="140" width="343" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LtG-go-dMA">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="78"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-FL-iVh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-16-DTc">
-                                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ok3-TH-oaw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
+                                                        <segments>
+                                                            <segment title="Generous"/>
+                                                            <segment title="Happy"/>
+                                                            <segment title="Decent"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="tipTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="oQN-0b-onT"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-od-7Lt">
+                                                        <rect key="frame" x="0.0" y="48" width="343" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-FL-iVh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-16-DTc">
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0MZ-3q-BW4" userLabel="Merge Total Stack">
+                                                <rect key="frame" x="0.0" y="98" width="343" height="48"/>
+                                                <subviews>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-Re-0Zc">
+                                                        <rect key="frame" x="0.0" y="10" width="167.5" height="29"/>
+                                                        <segments>
+                                                            <segment title="Split"/>
+                                                            <segment title="Merge"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="totalTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3GW-ie-0Ah"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8si-gz-BAb">
+                                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="48"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="7om-4A-S3t"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0MZ-3q-BW4" userLabel="Total Stack">
-                                        <rect key="frame" x="0.0" y="190" width="343" height="48"/>
-                                        <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-Re-0Zc">
-                                                <rect key="frame" x="0.0" y="10" width="167.5" height="29"/>
-                                                <segments>
-                                                    <segment title="Split"/>
-                                                    <segment title="Merge"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="totalTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3GW-ie-0Ah"/>
-                                                </connections>
-                                            </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8si-gz-BAb">
-                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="7om-4A-S3t"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-fp-nv5" userLabel="Split Total Stack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-fp-nv5" userLabel="Split Total Stack">
                                         <rect key="frame" x="0.0" y="258" width="343" height="164"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-wo-7qD">
@@ -210,8 +215,8 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="BIt-jZ-b5f" firstAttribute="leading" secondItem="UDz-16-DTc" secondAttribute="leading" id="QoN-3m-EFY"/>
-                                    <constraint firstItem="cNC-xu-Xvm" firstAttribute="trailing" secondItem="ovt-FL-iVh" secondAttribute="trailing" id="mHT-LR-J8u"/>
+                                    <constraint firstItem="BIt-jZ-b5f" firstAttribute="leading" secondItem="UDz-16-DTc" secondAttribute="leading" id="j28-S1-HO9"/>
+                                    <constraint firstItem="cNC-xu-Xvm" firstAttribute="trailing" secondItem="ovt-FL-iVh" secondAttribute="trailing" id="owK-dA-y26"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -225,9 +230,9 @@
                     <navigationItem key="navigationItem" title="Tip Calculator" id="kzd-hR-Hqj"/>
                     <connections>
                         <outlet property="billAmount" destination="4L8-bX-TZt" id="ZKf-H9-Nd2"/>
-                        <outlet property="mainStack" destination="d65-U5-Gut" id="hxO-E2-o0A"/>
                         <outlet property="splitTotalStack" destination="A6B-fp-nv5" id="ciZ-At-dbw"/>
                         <outlet property="tipAmount" destination="UDz-16-DTc" id="a35-Bd-jBo"/>
+                        <outlet property="tipStack" destination="McT-LV-Opv" id="kDa-st-3pU"/>
                         <outlet property="tipTypeControl" destination="ok3-TH-oaw" id="TLb-JR-Ssj"/>
                         <outlet property="totalFor1" destination="8si-gz-BAb" id="sKv-hd-nZ5"/>
                         <outlet property="totalFor2" destination="BIt-jZ-b5f" id="DVp-Yp-DV8"/>

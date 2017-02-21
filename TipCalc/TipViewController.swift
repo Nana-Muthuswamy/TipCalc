@@ -20,14 +20,23 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var totalFor3: UILabel!
     @IBOutlet weak var totalFor4: UILabel!
 
-    @IBOutlet weak var mainStack: UIStackView!
     @IBOutlet weak var totalStack: UIStackView!
     @IBOutlet weak var splitTotalStack: UIStackView!
+    @IBOutlet weak var tipStack: UIStackView!
+
 
     enum TotalType: Int {
         case Split
         case Merge
     }
+
+    enum ViewState {
+        case Basic
+        case Detail
+    }
+
+    // Keeps track of current View State
+    var currentViewState = ViewState.Basic
 
     // Calc Engine
     let engine = TipCalcEngine()
@@ -41,20 +50,20 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Set View Initial State
+        tipStack.alpha = 0.0
+        splitTotalStack.alpha = 0.0
+
         // TDO: Need to replace this with locale currency symbol
         billAmount.text = "$"
 
-        // Displays the keypad
         showKeyPad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         super.touchesBegan(touches, with: event)
+
         hideKeyPad()
     }
 
@@ -76,14 +85,17 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     @IBAction func tipTypeChanged(_ sender: UISegmentedControl) {
 
         hideKeyPad()
+
         // Calculate new total and update the field values
         updateUIFieldValues()
     }
 
     @IBAction func totalTypeChanged(_ sender: UISegmentedControl) {
+
         hideKeyPad()
-        // Update UI to display either Merged Total or Split Totals
-        updateUI(for: TotalType.init(rawValue: sender.selectedSegmentIndex)!)
+
+        // UI to display either Merged Total or Split Totals
+        updateTotalsUI(TotalType.init(rawValue: sender.selectedSegmentIndex)!)
     }
 
     // MARK: UITextFieldDelegate
@@ -93,6 +105,14 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
         if string == "" && textField.text! == "$" {
             canChange = false
+
+            // Update the view layout to display basic details when no bill amount is entered
+            if currentViewState != .Basic {updateUIState(.Basic)}
+
+        } else {
+
+            // Update the view layout to display other details when bill amount is entered
+            if currentViewState != .Detail {updateUIState(.Detail)}
         }
 
         return canChange
@@ -125,12 +145,11 @@ class TipViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    private func updateUI(for totalType: TotalType) -> Void {
+    private func updateTotalsUI(_ totalType: TotalType) -> Void {
 
         switch totalType {
 
         case .Split:
-
             UIView.animate(withDuration: 0.5, animations: {
 
                 self.splitTotalStack.alpha = 1.0
@@ -142,7 +161,6 @@ class TipViewController: UIViewController, UITextFieldDelegate {
             })
 
         case .Merge:
-
             self.totalStack.addArrangedSubview(self.totalFor1)
 
             UIView.animate(withDuration: 0.5, animations: {
@@ -153,13 +171,38 @@ class TipViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    private func updateUIState(_ newState: ViewState) -> Void {
+
+        switch newState {
+
+        case .Basic:
+            UIView.animate(withDuration: 0.5, animations: { 
+                self.tipStack.alpha = 0.0
+                self.splitTotalStack.alpha = 0.0
+            })
+
+        case .Detail:
+
+            UIView.animate(withDuration: 0.5, animations: {
+                self.tipStack.alpha = 1.0
+
+            }, completion: { (completed) in
+
+                self.updateTotalsUI(TotalType.init(rawValue: self.totalTypeControl.selectedSegmentIndex)!)
+            })
+        }
+
+        // reset the new view state
+        currentViewState = newState
+    }
+
     private func hideKeyPad() -> Void {
-        // Hides the keypad
+        // Implicitly Hides the keypad
         billAmount.resignFirstResponder()
     }
 
     private func showKeyPad() -> Void {
-        // Displays the keypad
+        // Implicitly Displays the keypad
         billAmount.becomeFirstResponder()
     }
 }
