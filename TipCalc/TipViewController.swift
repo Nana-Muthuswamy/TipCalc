@@ -20,6 +20,7 @@ class TipViewController: UIViewController {
     @IBOutlet weak var totalFor3: UILabel!
     @IBOutlet weak var totalFor4: UILabel!
 
+    @IBOutlet weak var mainStack: UIStackView!
     @IBOutlet weak var totalStack: UIStackView!
     @IBOutlet weak var splitTotalStack: UIStackView!
 
@@ -40,6 +41,8 @@ class TipViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Present initial UI state
+        updateUI(for: TotalType.Merge)
         // Displays the keypad
         showKeyPad()
     }
@@ -111,11 +114,17 @@ class TipViewController: UIViewController {
     private func updateUI(for totalType: TotalType) -> Void {
 
         switch totalType {
+
         case .Split:
+
             totalStack.removeArrangedSubview(totalFor1)
+            mainStack.addArrangedSubview(splitTotalStack)
             splitTotalStack.isHidden = false
+
         case .Merge:
+            
             totalStack.addArrangedSubview(totalFor1)
+            mainStack.removeArrangedSubview(splitTotalStack)
             splitTotalStack.isHidden = true
         }
     }
