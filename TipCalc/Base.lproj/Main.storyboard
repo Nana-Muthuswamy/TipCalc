@@ -35,6 +35,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                 <connections>
                                                     <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9ma-B0-16A"/>
                                                 </connections>
                                             </textField>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ok3-TH-oaw">

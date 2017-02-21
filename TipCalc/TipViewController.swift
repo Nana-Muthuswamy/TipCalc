@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipViewController: UIViewController {
+class TipViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var billAmount: UITextField!
     @IBOutlet weak var tipTypeControl: UISegmentedControl!
@@ -40,6 +40,9 @@ class TipViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // TDO: Need to replace this with locale currency symbol
+        billAmount.text = "$"
 
         // Displays the keypad
         showKeyPad()
@@ -83,13 +86,26 @@ class TipViewController: UIViewController {
         updateUI(for: TotalType.init(rawValue: sender.selectedSegmentIndex)!)
     }
 
+    // MARK: UITextFieldDelegate
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var canChange = true
+
+        if string == "" && textField.text! == "$" {
+            canChange = false
+        }
+
+        return canChange
+    }
+
     // MARK: Utils
 
     private func updateUIFieldValues () -> Void {
 
         let selectedTipType = TipCalcEngine.TipType(rawValue: tipTypeControl.selectedSegmentIndex)! // Guaranteed return value
+        let inputBillAmountText = billAmount.text!.trimmingCharacters(in: CharacterSet(charactersIn:"$"))
 
-        if let inputBillAmount = Float(billAmount.text ?? ""), inputBillAmount > 0 {
+        if let inputBillAmount = Float(inputBillAmountText), inputBillAmount > 0 {
 
             let result = engine.calculatTipAndTotals(billAmount: inputBillAmount, tipType: selectedTipType)
 
