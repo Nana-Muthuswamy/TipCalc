@@ -194,20 +194,22 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="lHF-TV-kVd" firstAttribute="trailing" secondItem="r6z-76-ozw" secondAttribute="trailing" id="Ynx-hM-fSa"/>
+                                    <constraint firstItem="r6z-76-ozw" firstAttribute="trailing" secondItem="cNC-xu-Xvm" secondAttribute="trailing" id="a68-Qw-ypw"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="A6B-fp-nv5" secondAttribute="trailing" constant="16" id="3QC-ob-GdV"/>
                             <constraint firstItem="0MZ-3q-BW4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GBp-Tf-7CF"/>
-                            <constraint firstItem="lHF-TV-kVd" firstAttribute="trailing" secondItem="YZN-Re-0Zc" secondAttribute="trailing" id="Gq1-Y3-nrn"/>
-                            <constraint firstItem="cNC-xu-Xvm" firstAttribute="trailing" secondItem="YZN-Re-0Zc" secondAttribute="trailing" id="IUG-sc-p3q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="McT-LV-Opv" secondAttribute="trailing" id="Zxc-6C-90d"/>
                             <constraint firstItem="0MZ-3q-BW4" firstAttribute="top" secondItem="McT-LV-Opv" secondAttribute="bottom" constant="20" id="dyx-Yg-lu0"/>
                             <constraint firstItem="A6B-fp-nv5" firstAttribute="top" secondItem="0MZ-3q-BW4" secondAttribute="bottom" constant="20" id="gCq-s4-cnI"/>
+                            <constraint firstItem="cNC-xu-Xvm" firstAttribute="trailing" secondItem="ovt-FL-iVh" secondAttribute="trailing" id="gdz-vk-CYQ"/>
                             <constraint firstItem="McT-LV-Opv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="hZK-3Y-pMV"/>
                             <constraint firstItem="McT-LV-Opv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="r1z-km-Jq7"/>
-                            <constraint firstItem="r6z-76-ozw" firstAttribute="trailing" secondItem="YZN-Re-0Zc" secondAttribute="trailing" id="raV-TZ-jAl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0MZ-3q-BW4" secondAttribute="trailing" id="uWJ-OC-O8A"/>
                         </constraints>
                     </view>

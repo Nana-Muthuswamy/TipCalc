@@ -78,6 +78,8 @@ class TipViewController: UIViewController {
 
     @IBAction func totalTypeChanged(_ sender: UISegmentedControl) {
         hideKeyPad()
+        // Update UI to display either Merged Total or Split Totals
+        updateUI(for: TotalType.init(rawValue: sender.selectedSegmentIndex)!)
     }
 
     // MARK: Utils
@@ -103,6 +105,18 @@ class TipViewController: UIViewController {
             totalFor2.text = " "
             totalFor3.text = " "
             totalFor4.text = " "
+        }
+    }
+
+    private func updateUI(for totalType: TotalType) -> Void {
+
+        switch totalType {
+        case .Split:
+            totalStack.removeArrangedSubview(totalFor1)
+            splitTotalStack.isHidden = false
+        case .Merge:
+            totalStack.addArrangedSubview(totalFor1)
+            splitTotalStack.isHidden = true
         }
     }
 
