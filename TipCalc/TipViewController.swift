@@ -41,8 +41,6 @@ class TipViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Present initial UI state
-        updateUI(for: TotalType.Merge)
         // Displays the keypad
         showKeyPad()
     }
@@ -117,15 +115,25 @@ class TipViewController: UIViewController {
 
         case .Split:
 
-            totalStack.removeArrangedSubview(totalFor1)
-            mainStack.addArrangedSubview(splitTotalStack)
-            splitTotalStack.isHidden = false
+            UIView.animate(withDuration: 0.5, animations: {
+
+                self.splitTotalStack.alpha = 1.0
+                self.totalFor1.alpha = 0.0
+
+            }, completion: { (completed) in
+
+                self.totalStack.removeArrangedSubview(self.totalFor1)
+            })
 
         case .Merge:
-            
-            totalStack.addArrangedSubview(totalFor1)
-            mainStack.removeArrangedSubview(splitTotalStack)
-            splitTotalStack.isHidden = true
+
+            self.totalStack.addArrangedSubview(self.totalFor1)
+
+            UIView.animate(withDuration: 0.5, animations: {
+
+                self.totalFor1.alpha = 1.0
+                self.splitTotalStack.alpha = 0.0
+            })
         }
     }
 

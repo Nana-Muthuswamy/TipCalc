@@ -91,7 +91,7 @@
                                             <constraint firstAttribute="height" constant="48" id="7om-4A-S3t"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-fp-nv5" userLabel="Split Total Stack">
+                                    <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-fp-nv5" userLabel="Split Total Stack">
                                         <rect key="frame" x="0.0" y="258" width="343" height="164"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-wo-7qD">
