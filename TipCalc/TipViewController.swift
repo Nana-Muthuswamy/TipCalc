@@ -212,4 +212,14 @@ class TipViewController: UIViewController, UITextFieldDelegate {
         // Implicitly Displays the keypad
         billAmount.becomeFirstResponder()
     }
+
+    // MARK: Segue
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if (segue.identifier == "Settings") {
+            let navigationItem = segue.destination.navigationItem
+            navigationItem.title = "Settings"
+        }
+    }
 }
