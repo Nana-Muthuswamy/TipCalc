@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="97c-ad-0aC"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="9ma-B0-16A"/>

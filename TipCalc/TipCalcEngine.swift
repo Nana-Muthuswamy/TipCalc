@@ -24,11 +24,11 @@ class TipCalcEngine {
 
         switch tipType {
         case .Decent:
-            tipPercentage = 0.10
+            tipPercentage = Float(UserPreferences.shared.preferredDecentTip)
         case .Happy:
-            tipPercentage = 0.15
+            tipPercentage = Float(UserPreferences.shared.preferredHappyTip)
         case .Generous:
-            tipPercentage = 0.20
+            tipPercentage = Float(UserPreferences.shared.preferredGenerousTip)
         }
 
         let tipAmount = billAmount * tipPercentage

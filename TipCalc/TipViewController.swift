@@ -51,6 +51,10 @@ class TipViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Set View Initial State
+        tipTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTipType
+        totalTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTotalType
+        updateTotalsUI(TotalType.init(rawValue: totalTypeControl.selectedSegmentIndex)!)
+
         tipStack.alpha = 0.0
         splitTotalStack.alpha = 0.0
 
