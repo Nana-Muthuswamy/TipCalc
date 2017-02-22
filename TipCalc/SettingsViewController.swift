@@ -33,4 +33,39 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         totalType.selectedSegmentIndex = userPref.preferredTotalType
     }
 
+    // MARK: Action methods
+
+    @IBAction func defaultTipTypeChanged(_ sender: UISegmentedControl) {
+
+        UserPreferences.shared.preferredTipType = sender.selectedSegmentIndex
+    }
+
+    @IBAction func defaultTotalTypeChanged(_ sender: UISegmentedControl) {
+
+        UserPreferences.shared.preferredTotalType = sender.selectedSegmentIndex
+    }
+
+    // MARK: UITextFieldDelegate
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        if let input = textField.text {
+
+            let userPref = UserPreferences.shared
+
+            switch textField {
+
+            case decentTip:
+                userPref.preferredDecentTip = Float(input) ?? 0.0
+            case happyTip:
+                userPref.preferredHappyTip = Float(input) ?? 0.0
+            case generousTip:
+                userPref.preferredGenerousTip = Float(input) ?? 0.0
+                
+            default:
+                break
+            }
+        }
+    }
+
 }

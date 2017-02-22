@@ -74,7 +74,11 @@ class UserPreferences {
             return defaults.float(forKey: "decentTip")
         }
         set {
-            defaults.set(newValue, forKey: "decentTip")
+            if newValue >= 0 {
+                defaults.set(newValue, forKey: "decentTip")
+            } else {
+                defaults.set(DefaultPreferences().decentTip, forKey: "decentTip")
+            }
         }
     }
 
@@ -83,7 +87,11 @@ class UserPreferences {
             return defaults.float(forKey: "happyTip")
         }
         set {
-            defaults.set(newValue, forKey: "happyTip")
+            if newValue >= 0 {
+                defaults.set(newValue, forKey: "happyTip")
+            } else {
+                defaults.set(DefaultPreferences().happyTip, forKey: "happyTip")
+            }
         }
     }
 
@@ -92,7 +100,12 @@ class UserPreferences {
             return defaults.float(forKey: "generousTip")
         }
         set {
-            defaults.set(newValue, forKey: "generousTip")
+            if newValue >= 0 {
+                defaults.set(newValue, forKey: "generousTip")
+            } else {
+                defaults.set(DefaultPreferences().generousTip, forKey: "generousTip")
+            }
+
         }
     }
 

@@ -407,6 +407,8 @@
                                                         <segment title="Decent"/>
                                                     </segments>
                                                     <connections>
+                                                        <action selector="defaultTipTypeChanged:" destination="9U1-eb-oAt" eventType="valueChanged" id="I2d-D5-aIR"/>
+                                                        <action selector="defaultTotalTypeChanged:" destination="9U1-eb-oAt" eventType="valueChanged" id="FKE-cN-Qwa"/>
                                                         <action selector="tipTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7O5-ek-DRJ"/>
                                                     </connections>
                                                 </segmentedControl>
@@ -439,6 +441,7 @@
                                                         <segment title="Merge"/>
                                                     </segments>
                                                     <connections>
+                                                        <action selector="defaultTotalTypeChanged:" destination="9U1-eb-oAt" eventType="valueChanged" id="Hfe-KI-K6i"/>
                                                         <action selector="totalTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1V5-e7-xIn"/>
                                                     </connections>
                                                 </segmentedControl>
