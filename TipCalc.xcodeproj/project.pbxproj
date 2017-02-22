@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		399AE4251E5D069D00B75235 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AE4241E5D069D00B75235 /* SettingsViewController.swift */; };
 		39EAB78E1E5963DB001D55CC /* TipCalcEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EAB78D1E5963DB001D55CC /* TipCalcEngine.swift */; };
 		39F347021E56CC61008E4A03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F347011E56CC61008E4A03 /* AppDelegate.swift */; };
 		39F347041E56CC61008E4A03 /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F347031E56CC61008E4A03 /* TipViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		399AE4241E5D069D00B75235 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		39EAB78D1E5963DB001D55CC /* TipCalcEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalcEngine.swift; sourceTree = "<group>"; };
 		39F346FE1E56CC61008E4A03 /* TipCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F347011E56CC61008E4A03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				39F347011E56CC61008E4A03 /* AppDelegate.swift */,
 				39F347031E56CC61008E4A03 /* TipViewController.swift */,
+				399AE4241E5D069D00B75235 /* SettingsViewController.swift */,
 				39EAB78D1E5963DB001D55CC /* TipCalcEngine.swift */,
 				39F347051E56CC61008E4A03 /* Main.storyboard */,
 				39F347081E56CC61008E4A03 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 				39F347041E56CC61008E4A03 /* TipViewController.swift in Sources */,
 				39F347021E56CC61008E4A03 /* AppDelegate.swift in Sources */,
 				39EAB78E1E5963DB001D55CC /* TipCalcEngine.swift in Sources */,
+				399AE4251E5D069D00B75235 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

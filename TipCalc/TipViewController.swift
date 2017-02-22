@@ -99,17 +99,24 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: UITextFieldDelegate
-
+    // TDO: Need to handle Cut/Copy/Paste scenarios and deleting first digit by moving cursor
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
         var canChange = true
 
-        if string == "" && textField.text! == "$" {
-            canChange = false
+        // When range.location is 0, do not allow edit. This is to retain the currency symbol always.
+        if range.location == 0 {
 
+            canChange = false
+        }
+        // When range.location is lesser than or equal to 1 and when range.length is greater than 0, all digits are cleared and thus view state should be set to Basic if it isn't already.
+        else if range.location <= 1 && range.length > 0 {
             // Update the view layout to display basic details when no bill amount is entered
             if currentViewState != .Basic {updateUIState(.Basic)}
 
-        } else {
+        }
+        // In all other cases, the view state should be set to Detail if it isn't already
+        else {
 
             // Update the view layout to display other details when bill amount is entered
             if currentViewState != .Detail {updateUIState(.Detail)}
