@@ -33,14 +33,25 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         totalType.selectedSegmentIndex = userPref.preferredTotalType
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        super.touchesBegan(touches, with: event)
+
+        hideKeyPad()
+    }
+
     // MARK: Action methods
 
     @IBAction func defaultTipTypeChanged(_ sender: UISegmentedControl) {
+
+        hideKeyPad()
 
         UserPreferences.shared.preferredTipType = sender.selectedSegmentIndex
     }
 
     @IBAction func defaultTotalTypeChanged(_ sender: UISegmentedControl) {
+
+        hideKeyPad()
 
         UserPreferences.shared.preferredTotalType = sender.selectedSegmentIndex
     }
@@ -56,16 +67,25 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             switch textField {
 
             case decentTip:
-                userPref.preferredDecentTip = Float(input) ?? 0.0
+                userPref.preferredDecentTip = Int(input) ?? 0
             case happyTip:
-                userPref.preferredHappyTip = Float(input) ?? 0.0
+                userPref.preferredHappyTip = Int(input) ?? 0
             case generousTip:
-                userPref.preferredGenerousTip = Float(input) ?? 0.0
+                userPref.preferredGenerousTip = Int(input) ?? 0
                 
             default:
                 break
             }
         }
+    }
+
+    // MARK: Utils
+
+    func hideKeyPad() -> Void {
+        // Hides key pad and force updates user preferred value
+        decentTip.resignFirstResponder()
+        happyTip.resignFirstResponder()
+        generousTip.resignFirstResponder()
     }
 
 }

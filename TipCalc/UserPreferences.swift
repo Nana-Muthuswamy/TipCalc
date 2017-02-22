@@ -69,12 +69,12 @@ class UserPreferences {
         }
     }
 
-    var preferredDecentTip: Float {
+    var preferredDecentTip: Int {
         get {
-            return defaults.float(forKey: "decentTip")
+            return defaults.integer(forKey: "decentTip")
         }
         set {
-            if newValue >= 0 {
+            if newValue > 0 {
                 defaults.set(newValue, forKey: "decentTip")
             } else {
                 defaults.set(DefaultPreferences().decentTip, forKey: "decentTip")
@@ -82,12 +82,12 @@ class UserPreferences {
         }
     }
 
-    var preferredHappyTip: Float {
+    var preferredHappyTip: Int {
         get {
-            return defaults.float(forKey: "happyTip")
+            return defaults.integer(forKey: "happyTip")
         }
         set {
-            if newValue >= 0 {
+            if newValue > 0 {
                 defaults.set(newValue, forKey: "happyTip")
             } else {
                 defaults.set(DefaultPreferences().happyTip, forKey: "happyTip")
@@ -95,12 +95,12 @@ class UserPreferences {
         }
     }
 
-    var preferredGenerousTip: Float {
+    var preferredGenerousTip: Int {
         get {
-            return defaults.float(forKey: "generousTip")
+            return defaults.integer(forKey: "generousTip")
         }
         set {
-            if newValue >= 0 {
+            if newValue > 0 {
                 defaults.set(newValue, forKey: "generousTip")
             } else {
                 defaults.set(DefaultPreferences().generousTip, forKey: "generousTip")
