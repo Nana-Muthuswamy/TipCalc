@@ -33,6 +33,13 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         totalType.selectedSegmentIndex = userPref.preferredTotalType
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Save user edited values
+        UserPreferences.shared.saveUserPreferences()
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         super.touchesBegan(touches, with: event)

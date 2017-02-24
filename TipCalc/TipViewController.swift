@@ -50,18 +50,16 @@ class TipViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set View Initial State
-        tipTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTipType
-        totalTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTotalType
-        updateTotalsUI(TotalType.init(rawValue: totalTypeControl.selectedSegmentIndex)!)
-
-        tipStack.alpha = 0.0
-        splitTotalStack.alpha = 0.0
-
         // TDO: Need to replace this with locale currency symbol
         billAmount.text = "$"
 
         showKeyPad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        setupUI()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -131,6 +129,17 @@ class TipViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Utils
 
+    // Sets up the UI whenever the controller's content view is added to the app's view hierarchy
+    private func setupUI() -> Void {
+
+        tipTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTipType
+        totalTypeControl.selectedSegmentIndex = UserPreferences.shared.preferredTotalType
+
+        updateUIState(currentViewState)
+
+        updateUIFieldValues()
+    }
+
     private func updateUIFieldValues () -> Void {
 
         let selectedTipType = TipCalcEngine.TipType(rawValue: tipTypeControl.selectedSegmentIndex)! // Guaranteed return value
@@ -187,6 +196,9 @@ class TipViewController: UIViewController, UITextFieldDelegate {
         switch newState {
 
         case .Basic:
+
+            self.updateTotalsUI(TotalType.init(rawValue: self.totalTypeControl.selectedSegmentIndex)!)
+
             UIView.animate(withDuration: 0.5, animations: { 
                 self.tipStack.alpha = 0.0
                 self.splitTotalStack.alpha = 0.0
