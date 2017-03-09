@@ -31,6 +31,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
         tipType.selectedSegmentIndex = userPref.preferredTipType
         totalType.selectedSegmentIndex = userPref.preferredTotalType
+
+        // Add Tap Gesture to UITableView to order out Keypad
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tableView.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,13 +42,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         // Save user edited values
         UserPreferences.shared.saveUserPreferences()
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-        super.touchesBegan(touches, with: event)
-
-        hideKeyPad()
     }
 
     // MARK: Action methods
@@ -90,9 +87,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     func hideKeyPad() -> Void {
         // Hides key pad and force updates user preferred value
-        decentTip.resignFirstResponder()
-        happyTip.resignFirstResponder()
-        generousTip.resignFirstResponder()
+        view.endEditing(true)
     }
 
+    func handleTap(tapGesture: UITapGestureRecognizer) -> Void {
+        hideKeyPad()
+    }
 }
